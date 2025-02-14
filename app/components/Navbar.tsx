@@ -1,10 +1,18 @@
 "use client";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { checkAndAddUser } from "../actions";
 
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
+
+  useEffect(() => {
+    if (user?.primaryEmailAddress?.emailAddress) {
+      checkAndAddUser(user.primaryEmailAddress.emailAddress);
+    }
+  }, [user]);
+
   return (
     <div className="bg-base-200/50 px-5 md:px-[10%] py-4">
       {isLoaded &&
@@ -12,10 +20,12 @@ const Navbar = () => {
           <>
             <div className="flex justify-between items-center">
               <div className="flex text-2xl items-center font-bold">
-                dream <span className="text-accent">app</span>
+                <Link href={"/"}>
+                  dream<span className="text-accent">app</span>
+                </Link>
               </div>
               <div className="md:flex hidden">
-                <Link href={""} className="btn btn-outline btn-sm">
+                <Link href={"/budjets"} className="btn btn-outline btn-sm">
                   Mes budgets
                 </Link>
                 <Link href={""} className="btn mx-4 btn-outline btn-sm">
@@ -28,7 +38,7 @@ const Navbar = () => {
               <UserButton />
             </div>
             <div className="md:hidden flex mt-2 justify-center">
-              <Link href={""} className="btn btn-outline btn-sm">
+              <Link href={"/budjets"} className="btn btn-outline btn-sm">
                 Mes budgets
               </Link>
               <Link href={""} className="btn mx-4 btn-outline btn-sm">
