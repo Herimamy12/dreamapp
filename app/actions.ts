@@ -19,8 +19,6 @@ export async function checkAndAddUser(email: string | undefined) {
         data: { email },
       });
       console.log("New user added");
-    } else {
-      console.log("User already exists");
     }
   } catch (error) {
     console.error("Error check user", error);

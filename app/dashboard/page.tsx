@@ -25,7 +25,7 @@ import Link from "next/link";
 import BudgetItem from "../components/BudgetItem";
 import TransactionItem from "../components/TransactionItem";
 
-const page = () => {
+const Page = () => {
   const { user } = useUser();
   const [totalAmount, setTotalAmount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -161,4 +161,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

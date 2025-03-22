@@ -6,7 +6,7 @@ import { getTransactionByEmailAndPeriod } from "../actions";
 import Wrapper from "../components/Wrapper";
 import TransactionItem from "../components/TransactionItem";
 
-const page = () => {
+const Page = () => {
   const { user } = useUser();
   const [transactions, setTransaction] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -65,4 +65,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

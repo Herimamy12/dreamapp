@@ -13,7 +13,7 @@ import { Send, Trash2 } from "lucide-react";
 import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const page = ({ params }: { params: Promise<{ budgetId: string }> }) => {
+const Page = ({ params }: { params: Promise<{ budgetId: string }> }) => {
   const [budgetId, setBudgetId] = useState<string>("");
   const [budget, setBudget] = useState<Budget>();
   const [description, setDescription] = useState<string>("");
@@ -200,4 +200,4 @@ const page = ({ params }: { params: Promise<{ budgetId: string }> }) => {
   );
 };
 
-export default page;
+export default Page;
