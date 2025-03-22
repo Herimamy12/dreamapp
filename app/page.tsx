@@ -1,39 +1,53 @@
-import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./components/Navbar";
-import { UserButton } from "@clerk/nextjs";
+import Wrapper from "./components/Wrapper";
+import BudgetItem from "./components/BudgetItem";
+import budgets from "./data";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
+    <Wrapper>
       <div className="flex items-center justify-center flex-col py-10 w-full">
-        <div>
-          <div className="flex flex-col">
-            <h1 className="text-4xl md:text-5xl font-bold text-center">
-              Prenez le controle <br /> de vos finances
-            </h1>
-            <p className="py-6 text-neutral-100 text-center">
-              Lorem ipsum, dolor sit amet <br /> consectetur adipisicing elit.
-              Reprehenderit quia dolorem delectus eaque.
-            </p>
-            <div className="flex justify-center items-center">
-              <Link
-                href={"/sign-in"}
-                className="btn btn-sm md:btn-md btn-outline btn-accent"
-              >
-                Se connecter
-              </Link>
-              <Link
-                href={"/sign-up"}
-                className="btn btn-sm md:btn-md ml-2 btn-accent"
-              >
-                S'inscrire
-              </Link>
+        <div className="flex flex-col">
+          <h1 className="text-7xl md:text-9xl font-bold text-center">
+            dream<span className="text-info">app</span>
+          </h1>
+          <p className="py-2 text-gray-300 text-center">
+            This is the app of our dreams
+          </p>
+          <div className="block mt-15 md:flex md:gap-3 max-w-screen-lg m-auto">
+            <div className="bg-gray-100/5 border rounded-box p-6 mx-3 md:flex-1">
+              <h1 className="text-2xl font-bold">Dashboard</h1>
+              <p>
+                To track your spending, use analytics tools that generate
+                detailed statistics. This data will allow you to adjust your
+                budget.
+              </p>
+            </div>
+            <div className="bg-gray-100/5 border rounded-box p-6 m-3 md:flex-1 md:m-0">
+              <h1 className="text-2xl font-bold">Budget</h1>
+              <p>
+                For better financial management, it is essential to track your
+                budgets precisely by detailing each expense and source of
+                income.
+              </p>
+            </div>
+            <div className="bg-gray-100/5 border rounded-box p-6 mx-3 md:flex-1">
+              <h1 className="text-2xl font-bold">Transaction</h1>
+              <p>
+                Take note of all of your transactions to ensure complete
+                traceability of your financial flows.
+              </p>
             </div>
           </div>
+          <ul className="grid md:grid-cols-3 gap-4 md:min-w-[1200px] mt-6">
+            {budgets.map((budget) => (
+              <Link href={""} key={budget.id}>
+                <BudgetItem budget={budget} enableHover={1}></BudgetItem>
+              </Link>
+            ))}
+          </ul>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 }
